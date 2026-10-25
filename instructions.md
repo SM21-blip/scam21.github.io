@@ -1,0 +1,1 @@
+The browser version is a bit laggy and the app version is a bit better. View profile at github.com/SM21-blip and go to repository posix.tar. Send any bugs @shauryamajumdar525@gmail.com. This game will be updated
