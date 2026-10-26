@@ -444,14 +444,14 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
     <script>
       const getProjectData = (function() {
-        const storage = scaffolding.storage;
+        const storage = window.scaffolding.storage;
         storage.onprogress = (total, loaded) => {
           setProgress(interpolate(0.75, 0.98, loaded / total));
         };
 
         let zip;
         // Allow zip to be GC'd after project loads
-        vm.runtime.on('PROJECT_LOADED', () => (zip = null));
+        window.vm.runtime.on('PROJECT_LOADED', () => (zip = null));
         const findFileInZip = (path) => zip.file(path) || zip.file(new RegExp("^([^/]*/)?" + path + "$"))[0];
         storage.addHelper({
           load: (assetType, assetId, dataFormat) => {
@@ -485,16 +485,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   <script>
     const run = async () => {
       const projectData = await getProjectData();
-      await scaffolding.loadProject(projectData);
+      await window.scaffolding.loadProject(projectData);
       setProgress(1);
       loadingScreen.hidden = true;
       if (true) {
-        scaffolding.start();
+        window.scaffolding.start();
       } else {
         launchScreen.hidden = false;
         launchScreen.addEventListener('click', () => {
           launchScreen.hidden = true;
-          scaffolding.start();
+          window.scaffolding.start();
         });
         launchScreen.focus();
       }
