@@ -279,7 +279,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     try {
       setProgress(0.1);
 
-      scaffolding = new Scaffolding.Scaffolding();
+      scaffolding = new window.Scaffolding.Scaffolding();
       scaffolding.width = 480;
       scaffolding.height = 360;
       scaffolding.resizeMode = "preserve-ratio";
@@ -304,7 +304,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       scaffolding.setAccentColor("#00c3ff");
 
       try {
-        scaffolding.addCloudProvider(new Scaffolding.Cloud.WebSocketProvider(["wss://clouddata.turbowarp.org","wss://clouddata.turbowarp.xyz"], "p4-@STE.sb3"));
+        scaffolding.addCloudProvider(new window.Scaffolding.Cloud.WebSocketProvider(["wss://clouddata.turbowarp.org","wss://clouddata.turbowarp.xyz"], "p4-@STE.sb3"));
       } catch (error) {
         console.error(error);
       }
@@ -475,7 +475,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         projectDecodeBuffer = null; // Allow GC
         return Promise.resolve(new Uint8Array(buffer, 0, 1366850));
       })().then(async (data) => {
-          zip = await Scaffolding.JSZip.loadAsync(data);
+          zip = await window.Scaffolding.JSZip.loadAsync(data);
           const file = findFileInZip('project.json');
           if (!file) {
             throw new Error('project.json is not in zip');
